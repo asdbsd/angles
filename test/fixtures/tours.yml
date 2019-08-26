@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  ad_price: 9.99
+  add_ad_price: 9.99
+  ch_price: 9.99
+  add_ch_price: 9.99
+  add_chg: 9.99
+
+two:
+  name: MyString
+  description: MyText
+  ad_price: 9.99
+  add_ad_price: 9.99
+  ch_price: 9.99
+  add_ch_price: 9.99
+  add_chg: 9.99
