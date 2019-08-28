@@ -13,8 +13,9 @@ class ToursController < ApplicationController
   end
 
   def create
-    if @tour.save(tour_params)
-      redirect_to tour_path(@tour)
+    @tour = Tour.new(tour_params)
+    if @tour.save
+      redirect_to tours_path
     else
       render 'new'
     end
@@ -24,8 +25,9 @@ class ToursController < ApplicationController
   end
 
   def update
-    if @tour.save(tour_params)
-      redirect_to tour_path(@tour)
+    if @tour.update(tour_params)
+      flash[:notice] = "Tour Updated"
+      redirect_to tours_path
     else
       render 'edit'
     end
@@ -43,6 +45,8 @@ class ToursController < ApplicationController
     end
 
     def tour_params
-      params.require(:tours).permit(:name, :description, :ad_price, :add_ad_price, :ch_price, :add_ch_price, :add_chg)
+      params.require(:tour).permit(:name, :ad_price, :ch_price, :add_ad_price,
+                                          :add_ch_price, :add_chg, :description)
     end
+
 end

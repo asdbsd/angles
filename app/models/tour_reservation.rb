@@ -1,0 +1,2 @@
+class TourReservation < ApplicationRecord
+end

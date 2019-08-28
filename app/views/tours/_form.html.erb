@@ -1,0 +1,45 @@
+  <%= form_with model: @tour, local: true do |f| %>
+  <form>
+    <div class="row">
+      <div class="col">
+      <%= f.label :name, "Tour Name" %>
+      <%= f.text_field :name, placeholder: "Tour Name", class: "form-control", autocomplete: "off" %>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-4">
+      <%= f.label :ad_price, "AD 1 PRICE" %>
+      <%= f.number_field :ad_price, placeholder: "Adult Price 1", class: "form-control" %>
+      </div>
+      <div class="col-4">
+      <%= f.label :ch_price, "CH 1 PRICE" %>
+      <%= f.number_field :ch_price, placeholder: "Child Price 1", class: "form-control" %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-4">
+      <%= f.label :add_ad_price, "AD 2 PRICE" %>
+      <%= f.number_field :add_ad_price, placeholder: "Adult Price 2", class: "form-control" %>
+      </div>
+      <div class="col-4">
+      <%= f.label :add_ch_price, "CH 2 PRICE" %>
+      <%= f.number_field :add_ch_price, placeholder: "Child Price 2", class: "form-control" %>
+      </div>
+      <div class="col">
+      <%= f.label :add_chg, "ADD CHG PRICE" %>
+      <%= f.number_field :add_chg, placeholder: "Additional Charge", class: "form-control" %>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">
+      <%= f.label :description, "Tour Description" %>
+      <%= f.text_area :description, placeholder: "Tour Description", class: "form-control", rows: "6"  %>
+      </div>
+    </div>
+    <br />
+      <%= f.submit @tour.new_record? ? "Create Tour" : "Update Tour", class: "btn btn-success float-right" %>
+  </form>
+  <% end %>

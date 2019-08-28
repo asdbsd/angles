@@ -5,8 +5,8 @@
     <thead>
       <th>Name</th>
       <th>AD 1</th>
-      <th>AD 2</th>
       <th>CH 1</th>
+      <th>AD 2</th>
       <th>CH 2</th>
       <th>ADD CHG</th>
       <th>Actions</th>
@@ -17,14 +17,14 @@
     <tbody>
       <td><%= tour.name %></td>
       <td><%= tour.ad_price %></td>
-      <td><%= tour.add_ad_price %></td>
       <td><%= tour.ch_price %></td>
+      <td><%= tour.add_ad_price %></td>
       <td><%= tour.add_ch_price %></td>
       <td><%= tour.add_chg %></td>
       <td>
         <div class="btn-group">
-          <%= link_to "Edit", tour, class: "btn btn-outline-primary" %>
-          <%= link_to "Delete", tour, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+          <%= link_to "Edit", edit_tour_path(tour), class: "btn btn-outline-primary" %>
+          <%= link_to "Delete", tour, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
         </div>
       </td>
   <% end %>
@@ -37,3 +37,4 @@
     <%= link_to "New Tour", new_tour_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>
 </div>
+<br />
