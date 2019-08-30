@@ -10,29 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_074621) do
+ActiveRecord::Schema.define(version: 2019_08_26_093222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "tour_reservations", force: :cascade do |t|
-    t.integer "tour_id"
     t.datetime "date"
     t.string "hotel"
     t.string "phone"
     t.string "voucher"
-    t.integer "ad_sell_price"
-    t.integer "add_ad_sale_price"
-    t.integer "ch_sale_price"
-    t.integer "add_ch_sale_price"
-    t.integer "add_chg_sale_price"
-    t.integer "pax_ad"
-    t.integer "pax_ch"
-    t.integer "pax_add_ad"
-    t.integer "pax_add_ch"
-    t.integer "pax_add_chg"
+    t.string "agent"
+    t.string "guide"
+    t.time "p_up_time"
+    t.decimal "ad_sale_price", precision: 8, scale: 2
+    t.decimal "add_ad_sale_price", precision: 8, scale: 2
+    t.decimal "ch_sale_price", precision: 8, scale: 2
+    t.decimal "add_ch_sale_price", precision: 8, scale: 2
+    t.decimal "add_chg_sale_price", precision: 8, scale: 2
+    t.integer "pax_ad", limit: 2
+    t.integer "pax_ch", limit: 2
+    t.integer "pax_add_ad", limit: 2
+    t.integer "pax_add_ch", limit: 2
+    t.integer "pax_add_chg", limit: 2
+    t.bigint "tour_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tour_id"], name: "index_tour_reservations_on_tour_id"
   end
 
   create_table "tours", force: :cascade do |t|

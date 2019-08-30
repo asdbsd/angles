@@ -1,0 +1,98 @@
+  <%= render 'error_messages' %>
+
+  <%= form_with model: @t_reservation, local: true do |f| %>
+    <form>
+      <div class="row">
+        <div class="col">
+        <%= f.label :tour_id, "Select Tour" %>
+        <%= f.collection_select(:tour_id, Tour.all, :id, :name, {selected: Tour.first}, { class: "form-control"}) %>
+        </div>
+        <div class="col">
+        <%= f.label :date, "Select Date" %>
+        <%= f.date_field :date, value: Date.today, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :phone, "Phone Number" %>
+          <%= f.text_field :phone, placeholder: "+66 666 666666", class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :voucher, "Voucher" %>
+          <%= f.text_field :voucher, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :agent, "Agent" %>
+          <%= f.text_field :agent, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :guide, "GUIDE" %>
+          <%= f.text_field :guide, class: "form-control" %>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+        <%= f.label :hotel, "Hotel Name" %>
+        <%= f.text_field :hotel, placeholder: "Select Hotel", class: "form-control" %>
+        </div>
+        <div class="col">
+        <%= f.label :p_up_time, "Pick up" %>
+        <%= f.time_field :p_up_time, class: "form-control" %>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col">
+          <%= f.label :ad_sale_price, "SALE AD 1" %>
+          <%= f.number_field :ad_sale_price, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :add_ad_sale_price, "SALE AD 2" %>
+          <%= f.number_field :add_ad_sale_price, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :ch_sale_price, "SALE CH 1" %>
+          <%= f.number_field :ch_sale_price, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :add_ch_sale_price, "SALE CH 2" %>
+          <%= f.number_field :add_ch_sale_price, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :add_chg_sale_price, "SALE ADD CHG" %>
+          <%= f.number_field :add_chg_sale_price, class: "form-control" %>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <%= f.label :pax_ad, "PAX AD 1" %>
+          <%= f.number_field :pax_ad, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :pax_add_ad, "PAX AD 2" %>
+          <%= f.number_field :pax_add_ad, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :pax_ch, "PAX CH 1" %>
+          <%= f.number_field :pax_ch, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :pax_add_ch, "PAX CH 2" %>
+          <%= f.number_field :pax_add_ch, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :pax_add_chg, "PAX ADD CHG" %>
+          <%= f.number_field :pax_add_chg, class: "form-control" %>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <%= link_to "Back to Tour Reservations", tour_reservations_path, class: "btn btn-outline-secondary" %>
+          <%= f.submit @t_reservation.new_record? ? "Create Reservation" : "Update Reservation", class: "btn btn-success float-right" %>
+        </div>
+      </div>
+    </form>
+  <% end %>

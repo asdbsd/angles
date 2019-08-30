@@ -10,26 +10,26 @@
     <div class="row">
       <div class="col-4">
       <%= f.label :ad_price, "AD 1 PRICE" %>
-      <%= f.number_field :ad_price, placeholder: "Adult Price 1", class: "form-control" %>
+      <%= f.number_field :ad_price, class: "form-control" %>
       </div>
       <div class="col-4">
       <%= f.label :ch_price, "CH 1 PRICE" %>
-      <%= f.number_field :ch_price, placeholder: "Child Price 1", class: "form-control" %>
+      <%= f.number_field :ch_price, class: "form-control" %>
       </div>
     </div>
     <br />
     <div class="row">
       <div class="col-4">
       <%= f.label :add_ad_price, "AD 2 PRICE" %>
-      <%= f.number_field :add_ad_price, placeholder: "Adult Price 2", class: "form-control" %>
+      <%= f.number_field :add_ad_price, class: "form-control" %>
       </div>
       <div class="col-4">
       <%= f.label :add_ch_price, "CH 2 PRICE" %>
-      <%= f.number_field :add_ch_price, placeholder: "Child Price 2", class: "form-control" %>
+      <%= f.number_field :add_ch_price, class: "form-control" %>
       </div>
       <div class="col">
       <%= f.label :add_chg, "ADD CHG PRICE" %>
-      <%= f.number_field :add_chg, placeholder: "Additional Charge", class: "form-control" %>
+      <%= f.number_field :add_chg, class: "form-control" %>
       </div>
     </div>
     <br />
@@ -40,6 +40,7 @@
       </div>
     </div>
     <br />
+      <%= link_to "Back to Tour Reservations", tour_reservations_path, class: "btn btn-outline-secondary" %>
       <%= f.submit @tour.new_record? ? "Create Tour" : "Update Tour", class: "btn btn-success float-right" %>
   </form>
   <% end %>

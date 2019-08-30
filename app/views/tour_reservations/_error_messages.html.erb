@@ -1,0 +1,10 @@
+  <% if @t_reservation.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Please correct the following <%= pluralize(@t_reservation.errors.count, "error") %>:</p>
+      <ul>
+        <% @t_reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

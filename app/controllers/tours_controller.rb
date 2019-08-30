@@ -2,7 +2,7 @@ class ToursController < ApplicationController
   before_action :find_tour, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tours = Tour.all
+    @tours = Tour.order("name ASC").page(params[:page])
   end
 
   def show

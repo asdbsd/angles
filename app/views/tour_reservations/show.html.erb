@@ -1,2 +1,74 @@
-<h1>TourReservations#show</h1>
-<p>Find me in app/views/tour_reservations/show.html.erb</p>
+  <h2><%= @t_reservation.tour.name %> Reservation |
+  <%= @t_reservation.date.strftime("%B %d %Y") %></h2>
+  <p>Voucher: <%= @t_reservation.voucher %> | <%= @t_reservation.agent %> |
+  <%= @t_reservation.guide %></p>
+  <div class="row">
+    <div class="col-md-12"></div>
+      <table class="table">
+        <tr>
+          <thead>
+            <th>PICK UP: </th>
+            <th>HOTEL: </th>
+            <th>SALE AD 1</th>
+            <th>SALE AD 2</th>
+            <th>SALE CH 1</th>
+            <th>SALE CH 2</th>
+            <th>SALE ADD CHG</th>
+          </thead>
+        </tr>
+        <tr>
+          <tbody>
+            <td><%= @t_reservation.p_up_time.strftime("%I:%M %p") %></td>
+            <td><%= @t_reservation.hotel %></td>
+            <td><%= number_to_currency(@t_reservation.ad_sale_price, unit: " THB", format: "%n%u") %></td>
+            <td><%= number_to_currency(@t_reservation.add_ad_sale_price, unit: " THB", format: "%n%u") %></td>
+            <td><%= number_to_currency(@t_reservation.ch_sale_price, unit: " THB", format: "%n%u") %></td>
+            <td><%=number_to_currency(@t_reservation.add_ch_sale_price, unit: " THB", format: "%n%u") %></td>
+            <td><%= number_to_currency(@t_reservation.add_chg_sale_price, unit: " THB", format: "%n%u") %></td>
+          </tbody>
+        </tr>
+      </table>
+      <div>
+        <p>Customer Number: <%= @t_reservation.phone %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= link_to "Back to Tour Reservations", tour_reservations_path, class: "btn btn-outline-secondary" %>
+      <div class="btn-group mb-3 float-right">
+        <%= link_to "Edit Reservation", edit_tour_reservation_path(@t_reservation), class: "btn btn-outline-primary" %>
+        <%= link_to "Delete Reservation", @t_reservation, method: :delete, data: { confirm: "Are you sure you want to delete this Reservation Record?"}, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h2>PROFIT</h2>
+      <table class="table">
+        <tr>
+          <thead class="thead-light">
+            <th>AD 1</th>
+            <th>AD 2</th>
+            <th>CH 1</th>
+            <th>CH 2</th>
+            <th>ADD CHG</th>
+          </thead>
+        </tr>
+        <tr>
+          <td>COST <strong><%= number_to_currency(@t_reservation.tour.ad_price, unit: " THB", format: "%n%u") %></strong><br />
+          SALE <strong><%= number_to_currency(@t_reservation.ad_sale_price, unit: " THB", format: "%n%u") %></strong><br /></td>
+          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_ad_price, unit: " THB", format: "%n%u") %></strong><br />
+          SALE<strong><%= number_to_currency(@t_reservation.add_ad_sale_price, unit: " THB", format: "%n%u") %></strong></td>
+          <td>COST <strong><%= number_to_currency(@t_reservation.tour.ch_price, unit: " THB", format: "%n%u") %></strong><br />
+          SALE <strong><%= number_to_currency(@t_reservation.ch_sale_price, unit: " THB", format: "%n%u") %></strong></td>
+          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_ch_price, unit: " THB", format: "%n%u") %></strong><br />
+          SALE <strong><%=number_to_currency(@t_reservation.add_ch_sale_price, unit: " THB", format: "%n%u") %></strong></td>
+          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_chg, unit: " THB", format: "%n%u") %></strong><br />
+          SALE <strong><%= number_to_currency(@t_reservation.add_chg_sale_price, unit: " THB", format: "%n%u") %></strong></td>
+        </tr>
+      </table>
+    </div>
+  </div>
