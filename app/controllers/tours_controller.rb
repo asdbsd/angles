@@ -2,7 +2,11 @@ class ToursController < ApplicationController
   before_action :find_tour, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tours = Tour.order("name ASC").page(params[:page])
+    if params[:sort]
+      @tours = Tour.order(params[:sort]).page(params[:page])
+    else
+      @tours = Tour.order("name ASC").page(params[:page])
+    end
   end
 
   def show

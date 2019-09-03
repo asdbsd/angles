@@ -50,24 +50,15 @@
       <table class="table">
         <tr>
           <thead class="thead-light">
-            <th>AD 1</th>
-            <th>AD 2</th>
-            <th>CH 1</th>
-            <th>CH 2</th>
-            <th>ADD CHG</th>
+            <th>COSTING</th>
+            <th>SELLING</th>
+            <th>TOTAL PROFIT</th>
           </thead>
         </tr>
         <tr>
-          <td>COST <strong><%= number_to_currency(@t_reservation.tour.ad_price, unit: " THB", format: "%n%u") %></strong><br />
-          SALE <strong><%= number_to_currency(@t_reservation.ad_sale_price, unit: " THB", format: "%n%u") %></strong><br /></td>
-          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_ad_price, unit: " THB", format: "%n%u") %></strong><br />
-          SALE<strong><%= number_to_currency(@t_reservation.add_ad_sale_price, unit: " THB", format: "%n%u") %></strong></td>
-          <td>COST <strong><%= number_to_currency(@t_reservation.tour.ch_price, unit: " THB", format: "%n%u") %></strong><br />
-          SALE <strong><%= number_to_currency(@t_reservation.ch_sale_price, unit: " THB", format: "%n%u") %></strong></td>
-          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_ch_price, unit: " THB", format: "%n%u") %></strong><br />
-          SALE <strong><%=number_to_currency(@t_reservation.add_ch_sale_price, unit: " THB", format: "%n%u") %></strong></td>
-          <td>COST <strong><%= number_to_currency(@t_reservation.tour.add_chg, unit: " THB", format: "%n%u") %></strong><br />
-          SALE <strong><%= number_to_currency(@t_reservation.add_chg_sale_price, unit: " THB", format: "%n%u") %></strong></td>
+          <td><%= number_to_currency(@costing, unit: " THB", format: "%n%u") %></td>
+          <td><%= number_to_currency(@selling, unit: " THB", format: "%n%u") %></td>
+          <td><%= number_to_currency(@profit, unit: " THB", format: "%n%u") %></td>
         </tr>
       </table>
     </div>

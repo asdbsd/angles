@@ -14,7 +14,7 @@ class TourReservation < ApplicationRecord
   attribute :pax_add_ch, :integer, default: 0
   attribute :pax_add_chg, :integer, default: 0
 
-  validates :voucher, length: { maximum: 15 }
+  validates :voucher, length: { in: 2..20 }
   validates :ad_sale_price, presence: true, numericality: { greater_than_or_equal_to: 0.01}
   validates :add_ad_sale_price, presence: true, numericality: { greater_than_or_equal_to: 0.0}
   validates :ch_sale_price, presence: true, numericality: { greater_than_or_equal_to: 0.0}
