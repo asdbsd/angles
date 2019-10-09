@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col">
+    <h1 class="text-center">All Group Reservations</h1>
+    <hr />
+    <%= link_to "Group Reservatons", new_group_tour_reservation_path, class: "btn  btn-primary mb-3 btn-block" %>
+    <table class="table">
+      <%= paginate @group_tour_reservations %>
+      <tr>
+        <thead>
+          <th>Name</th>
+          <th>DATE</th>
+          <th>GUIDE</th>
+          <th>GUIDE PAY</th>
+          <th>VEHICLE</th>
+          <th>VEHICLE PAY</th>
+          <th>Actions</th>
+        </thead>
+      </tr>
+      <%= render @group_tour_reservations %>
+    </table>
+
+    <% if @group_tour_reservations.empty? %>
+        <p>There are no <strong>Tours</strong> yet</p>
+    <% end %>
+
+    <%= paginate @group_tour_reservations %>
+  </div>
+</div>
+<br />

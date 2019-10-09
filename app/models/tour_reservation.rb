@@ -1,5 +1,7 @@
 class TourReservation < ApplicationRecord
   belongs_to :tour
+  has_many :grouped_reservations
+  has_many :group_tour_reservations, through: :grouped_reservations
 
   attribute :voucher, :string, default: "00000"
   attribute :p_up_time, :time, default: Time.now.strftime("%I:%M %p")

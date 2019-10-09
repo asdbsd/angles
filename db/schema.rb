@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_093222) do
+ActiveRecord::Schema.define(version: 2019_10_08_151321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_tour_reservations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.string "guide"
+    t.decimal "guide_pay", precision: 8, scale: 2
+    t.string "vehicle"
+    t.decimal "vehicle_pay", precision: 8, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "grouped_reservations", force: :cascade do |t|
+    t.bigint "group_tour_reservation_id", null: false
+    t.bigint "tour_reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_tour_reservation_id"], name: "index_grouped_reservations_on_group_tour_reservation_id"
+    t.index ["tour_reservation_id"], name: "index_grouped_reservations_on_tour_reservation_id", unique: true
+  end
 
   create_table "tour_reservations", force: :cascade do |t|
     t.datetime "date"
@@ -51,4 +71,6 @@ ActiveRecord::Schema.define(version: 2019_08_26_093222) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "grouped_reservations", "group_tour_reservations"
+  add_foreign_key "grouped_reservations", "tour_reservations"
 end

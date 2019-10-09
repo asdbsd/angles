@@ -1,0 +1,2 @@
+module GroupTourReservationsHelper
+end

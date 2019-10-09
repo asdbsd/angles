@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#   
 
 tours = Tour.create(
 [
@@ -48,3 +49,32 @@ tours = Tour.create(
   { name: 'Tarzan 25 Stations', ad_price: 800.00, add_ad_price: 0.00, ch_price: 800.00, add_ch_price: 0.00, add_chg: 0.00, description: "" },
   { name: 'Tarzan 30 Stations', ad_price: 1100.00, add_ad_price: 0.00, ch_price: 1100.00, add_ch_price: 0.00, add_chg: 0.00, description: "" }
 ])
+
+puts "All tours created"
+
+
+18.times do |res|
+  TourReservation.create(
+                        date: Date.today + res.day,
+                        hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
+                        phone: '+66 809747445',
+                        voucher: "TTG00000000#{res}",
+                        agent: res.even? ? 'TTG' : 'CORUS',
+                        guide: res.even? ? 'KONSTAN P' : 'KONSTAN A',
+                        p_up_time: Time.now + res.hour,
+                        tour_id: res + 1,
+                        ad_sale_price: Tour.find(res+1).ad_price + 200,
+                        add_ad_sale_price: Tour.find(res+1).ad_price + 200,
+                        ch_sale_price: Tour.find(res+1).ch_price + 200,
+                        add_ch_sale_price: Tour.find(res+1).add_ch_price + 200,
+                        add_chg_sale_price: Tour.find(res+1).add_chg + 200,
+                        pax_ad: res.even? ? 2 : 4,
+                        pax_ch: res.even? ? 1 : 2,
+                        pax_add_ad: 0,
+                        pax_add_ch: 0,
+                        pax_add_chg: 0
+                        )
+end
+
+
+puts "18 Tour Reservations Created"

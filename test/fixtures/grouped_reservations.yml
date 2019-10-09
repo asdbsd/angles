@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_tour_reservation: one
+  tour_reservation: one
+
+two:
+  group_tour_reservation: two
+  tour_reservation: two

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2019-09-30 09:49:36
+  guide: MyString
+  guide_pay: 9.99
+  vehicle: MyString
+  vehicle_pay: 9.99
+
+two:
+  name: MyString
+  date: 2019-09-30 09:49:36
+  guide: MyString
+  guide_pay: 9.99
+  vehicle: MyString
+  vehicle_pay: 9.99

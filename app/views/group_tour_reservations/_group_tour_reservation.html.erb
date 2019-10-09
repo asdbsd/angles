@@ -1,0 +1,16 @@
+<tr>
+  <tbody>
+    <td><%= group_tour_reservation.name %></td>
+    <td><%= group_tour_reservation.date.strftime("%B %d %Y") %></td>
+    <td><%= group_tour_reservation.guide %></td>
+    <td><%= number_to_currency(group_tour_reservation.guide_pay, unit: " THB", format: "%n%u") %></td>
+    <td><%= group_tour_reservation.vehicle %></td>
+    <td><%= number_to_currency(group_tour_reservation.vehicle_pay, unit: " THB", format: "%n%u") %></td>
+    <td>
+      <div class="btn-group">
+      <%= link_to "VIEW", group_tour_reservation, class: "btn btn-outline-info" %>
+      <%= link_to "EDIT", edit_group_tour_reservation_path(group_tour_reservation), class: "btn btn-outline-primary" %>
+      <%= link_to "DELETE", group_tour_reservation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>
+      </div>
+  </tbody>
+</tr>
