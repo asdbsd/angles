@@ -28,4 +28,11 @@ class TourReservation < ApplicationRecord
   validates :pax_add_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_chg, presence: true, numericality: { greater_than_or_equal_to: 0}
 
+
+
+
+  def tour_object_list
+    "#{date.strftime("%d %B %Y")}, #{tour.name}, #{voucher}"
+  end
+
 end
