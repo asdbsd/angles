@@ -1,0 +1,73 @@
+<%= form_with model: @group_tour_reservation, local: true do |form| %>
+<form>
+  <div class="form-row py-3">
+    <div class="form-group col-md-4">
+      <%= form.label :name, 'Group Name' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :date, 'Group Date' %>
+      <%= form.date_field :date, value: params[:date], class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-row py-3"> 
+    <div class="form-group col-md-3">
+      <%= form.label :vehicle,   'Select Vehicle' %>
+      <%= form.text_field :vehicle, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :vehicle_pay, 'Vehicle Pay' %>
+      <%= form.number_field :vehicle_pay, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :guide, 'Select Guide' %>
+      <%= form.text_field :guide, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :guide_pay, 'Guide Pay' %>
+      <%= form.number_field :guide_pay, class: 'form-control' %>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+    <% if @tour_res.present? %>
+    <h5>SELECT RESERVATIONS TO ADD</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">DATE</th>
+            <th scope="col">TOUR</th>
+            <th scope="col">HOTEL</th>
+            <th scope="col">PICK UP</th>
+            <th scope="col">MOBILE</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%= form.collection_check_boxes :tour_reservation_ids, @tour_res, :id, :date do |box| %>
+          <tr>
+            <td>
+            <div class="custom-control custom-checkbox">
+              <%= box.label(:"data-value" => box.value) { box.check_box + " " + box.text.strftime("%B %d %Y") } %>
+            </div>
+            </td>
+            <td><%= box.object.tour.name %></td>
+            <td><%= box.object.hotel %></td>
+            <td><%= box.object.p_up_time.strftime("%I:%M %p") %></td>
+            <td><%= box.object.phone %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      <% else %>
+      <h5>There are no Available Reservations to group on selected date.</h5>
+      <% end %>
+    </div>
+  </div>
+
+   <%= form.submit 'Create Reservation', method: :create, class: 'btn btn-primary btn-block' %>
+</form>
+<% end %>
+
+
+

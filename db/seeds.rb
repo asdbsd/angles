@@ -53,9 +53,9 @@ tours = Tour.create(
 puts "All tours created"
 
 
-18.times do |res|
+3.times do |res|
   TourReservation.create(
-                        date: Date.today + res.day,
+                        date: Date.today + 2,
                         hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
                         phone: '+66 809747445',
                         voucher: "TTG00000000#{res}",
@@ -76,5 +76,100 @@ puts "All tours created"
                         )
 end
 
+5.times do |res|
+  TourReservation.create(
+                        date: Date.today + 5,
+                        hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
+                        phone: '+66 809747445',
+                        voucher: "TTG00000000#{res}",
+                        agent: res.even? ? 'TTG' : 'CORUS',
+                        guide: res.even? ? 'KONSTAN P' : 'KONSTAN A',
+                        p_up_time: Time.now + res.hour,
+                        tour_id: res + 5,
+                        ad_sale_price: Tour.find(res+5).ad_price + 200,
+                        add_ad_sale_price: Tour.find(res+5).ad_price + 200,
+                        ch_sale_price: Tour.find(res+5).ch_price + 200,
+                        add_ch_sale_price: Tour.find(res+5).add_ch_price + 200,
+                        add_chg_sale_price: Tour.find(res+5).add_chg + 200,
+                        pax_ad: res.even? ? 2 : 4,
+                        pax_ch: res.even? ? 1 : 2,
+                        pax_add_ad: 0,
+                        pax_add_ch: 0,
+                        pax_add_chg: 0
+                        )
+end
 
-puts "18 Tour Reservations Created"
+9.times do |res|
+  TourReservation.create(
+                        date: Date.today + 2,
+                        hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
+                        phone: '+66 809747445',
+                        voucher: "TTG00000000#{res}",
+                        agent: res.even? ? 'TTG' : 'CORUS',
+                        guide: res.even? ? 'KONSTAN P' : 'KONSTAN A',
+                        p_up_time: Time.now + res.hour,
+                        tour_id: res + 2,
+                        ad_sale_price: Tour.find(res+2).ad_price + 200,
+                        add_ad_sale_price: Tour.find(res+2).ad_price + 200,
+                        ch_sale_price: Tour.find(res+2).ch_price + 200,
+                        add_ch_sale_price: Tour.find(res+2).add_ch_price + 200,
+                        add_chg_sale_price: Tour.find(res+2).add_chg + 200,
+                        pax_ad: res.even? ? 2 : 4,
+                        pax_ch: res.even? ? 1 : 2,
+                        pax_add_ad: 0,
+                        pax_add_ch: 0,
+                        pax_add_chg: 0
+                        )
+end
+
+4.times do |res|
+  TourReservation.create(
+                        date: Date.today + 4,
+                        hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
+                        phone: '+66 809747445',
+                        voucher: "TTG00000000#{res}",
+                        agent: res.even? ? 'TTG' : 'CORUS',
+                        guide: res.even? ? 'KONSTAN P' : 'KONSTAN A',
+                        p_up_time: Time.now + res.hour,
+                        tour_id: res + 8,
+                        ad_sale_price: Tour.find(res+8).ad_price + 200,
+                        add_ad_sale_price: Tour.find(res+8).ad_price + 200,
+                        ch_sale_price: Tour.find(res+8).ch_price + 200,
+                        add_ch_sale_price: Tour.find(res+8).add_ch_price + 200,
+                        add_chg_sale_price: Tour.find(res+8).add_chg + 200,
+                        pax_ad: res.even? ? 2 : 4,
+                        pax_ch: res.even? ? 1 : 2,
+                        pax_add_ad: 0,
+                        pax_add_ch: 0,
+                        pax_add_chg: 0
+                        )
+end
+
+puts "4 Tour Reservations Created"
+
+4.times do |res|
+  TourReservation.create(
+                        date: Date.today + 3,
+                        hotel: res.even? ? 'PATTAYA PARK' : 'NATURAL PARK',
+                        phone: '+66 809747445',
+                        voucher: "TTG00000000#{res}",
+                        agent: res.even? ? 'TTG' : 'CORUS',
+                        guide: res.even? ? 'KONSTAN P' : 'KONSTAN A',
+                        p_up_time: Time.now + res.hour,
+                        tour_id: res + 6,
+                        ad_sale_price: Tour.find(res+6).ad_price + 200,
+                        add_ad_sale_price: Tour.find(res+6).ad_price + 200,
+                        ch_sale_price: Tour.find(res+6).ch_price + 200,
+                        add_ch_sale_price: Tour.find(res+6).add_ch_price + 200,
+                        add_chg_sale_price: Tour.find(res+6).add_chg + 200,
+                        pax_ad: res.even? ? 2 : 4,
+                        pax_ch: res.even? ? 1 : 2,
+                        pax_add_ad: 0,
+                        pax_add_ch: 0,
+                        pax_add_chg: 0
+                        )
+end
+
+puts "4 Tour Reservations Created"
+
+

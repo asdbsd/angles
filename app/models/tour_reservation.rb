@@ -1,7 +1,9 @@
 class TourReservation < ApplicationRecord
+
   belongs_to :tour
-  has_many :grouped_reservations
+  has_many :grouped_reservations, dependent: :destroy
   has_many :group_tour_reservations, through: :grouped_reservations
+  enum status: { single: 0, grouped: 1}
 
   attribute :voucher, :string, default: "00000"
   attribute :p_up_time, :time, default: Time.now.strftime("%I:%M %p")
@@ -30,9 +32,9 @@ class TourReservation < ApplicationRecord
 
 
 
-
   def tour_object_list
-    "#{date.strftime("%d %B %Y")}, #{tour.name}, #{voucher}"
+    "#{date.strftime("%d-%B-%Y")} - #{hotel} - #{tour.name} - #{voucher}" 
   end
+
 
 end

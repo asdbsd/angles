@@ -2,7 +2,10 @@
   <div class="col">
     <h1 class="text-center">All Group Reservations</h1>
     <hr />
-    <%= link_to "Group Reservatons", new_group_tour_reservation_path, class: "btn  btn-primary mb-3 btn-block" %>
+    <%= form_tag new_group_tour_reservation_path, method: 'get' do %>
+      <%= date_field params[:date], :date, value: Date.today %>
+      <%= submit_tag "Group Reservatons", class: "btn  btn-primary mb-3 btn-block" %>
+    <% end %>
     <table class="table">
       <%= paginate @group_tour_reservations %>
       <tr>
