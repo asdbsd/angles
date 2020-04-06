@@ -1,4 +1,4 @@
-<%= form_with model: @group_tour_reservation, local: true do |form| %>
+<%= form_with model: @group_tour_reservation do |form| %>
 <form>
   <div class="form-row py-3">
     <div class="form-group col-md-4">
@@ -7,12 +7,12 @@
     </div>
     <div class="form-group col-md-2">
       <%= form.label :date, 'Group Date' %>
-      <%= form.date_field :date, value: params[:date], class: 'form-control' %>
+      <%= form.date_field :date, class: 'form-control' %>
     </div>
   </div>
-  <div class="form-row py-3"> 
+  <div class="form-row py-3">
     <div class="form-group col-md-3">
-      <%= form.label :vehicle,   'Select Vehicle' %>
+      <%= form.label :vehicle, 'Select Vehicle' %>
       <%= form.text_field :vehicle, class: 'form-control' %>
     </div>
     <div class="form-group col-md-3">
@@ -28,44 +28,34 @@
       <%= form.number_field :guide_pay, class: 'form-control' %>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-12">
-    <% if @tour_res.present? %>
-    <h5>SELECT RESERVATIONS TO ADD</h5>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">DATE</th>
-            <th scope="col">TOUR</th>
-            <th scope="col">HOTEL</th>
-            <th scope="col">PICK UP</th>
-            <th scope="col">MOBILE</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%= form.collection_check_boxes :tour_reservation_ids, @tour_res, :id, :date do |box| %>
-          <tr>
-            <td>
-            <div class="custom-control custom-checkbox">
-              <%= box.label(:"data-value" => box.value) { box.check_box + " " + box.text.strftime("%B %d %Y") } %>
-            </div>
-            </td>
-            <td><%= box.object.tour.name %></td>
-            <td><%= box.object.hotel %></td>
-            <td><%= box.object.p_up_time.strftime("%I:%M %p") %></td>
-            <td><%= box.object.phone %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-      <% else %>
-      <h5>There are no Available Reservations to group on selected date.</h5>
-      <% end %>
-    </div>
-  </div>
 
-   <%= form.submit 'Create Reservation', method: :create, class: 'btn btn-primary btn-block' %>
+  <h4>SELECT RESERVATIONS TO GROUP</h5>
+  <div class="form-row py-3">
+    <!-- Table  -->
+    <table class="table table-bordered">
+      <!-- Table head -->
+      <thead>
+        <tr>
+          <th>TOUR</th>
+          <th>DATE</th>
+          <th>VOUCHER</th>
+          <th>MOBILE</th>
+          <th>PICK UP</th>
+        </tr>
+      </thead>
+      <!-- Table head -->
+
+      <!-- Table body -->
+      <tbody>
+        <%= render partial: 'available_reservations', locals: { form: form } %>
+      </tbody>
+
+      <!-- Table body -->
+    </table>
+    <!-- Table  -->
+  </div>
+  <%= link_to "Back to Group Reservations", group_tour_reservations_path, class: "btn btn-outline-secondary" %>
+  <%= form.submit @group_tour_reservation.new_record? ? "Create Reservation" : "Save", class: "btn btn-success float-right" %>
 </form>
 <% end %>
 

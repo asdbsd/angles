@@ -1,5 +1,6 @@
 class GroupTourReservationsController < ApplicationController
   before_action :find_group_reservation, only: [:edit, :show, :update, :destroy]
+  before_action :define_selected_dates, only: [:edit, :new]
 
   def index
     @group_tour_reservations = GroupTourReservation.order("date ASC").page(params[:page])
@@ -9,12 +10,7 @@ class GroupTourReservationsController < ApplicationController
   end
 
   def new
-    if params[:date].nil? || params[:date].empty?
-      redirect_to group_tour_reservations_path
-    else
-      @group_tour_reservation = GroupTourReservation.new
-      set_tour_res
-    end
+    @group_tour_reservation = GroupTourReservation.new
   end
 
   def create
@@ -27,21 +23,19 @@ class GroupTourReservationsController < ApplicationController
   end
 
   def edit
-    set_tour_res
+    @ordered_list = @group_tour_reservation.tour_reservations
+    @reservations_list = @ordered_list.map(&:id)
   end
 
   def update
     if @group_tour_reservation.update(group_tour_reservation_params)
-      redirect_to group_tour_reservations_path
+      redirect_to edit_group_tour_reservation_path(@group_tour_reservation)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @group_tour_reservation.tour_reservations.each do |res|
-      res.update(status: 0)
-    end
     @group_tour_reservation.destroy
     redirect_to group_tour_reservations_path, notice: 'Group Reservation was deleted'
   end
@@ -49,19 +43,18 @@ class GroupTourReservationsController < ApplicationController
   private
 
   def group_tour_reservation_params
-    params.require(:group_tour_reservation).permit(:date, :name, :guide, :guide_pay, :vehicle, :vehicle_pay, tour_reservation_ids:[])
+    params.require(:group_tour_reservation).permit(:name, :date, :guide, :guide_pay,
+                                                   :vehicle, :selected_date, :vehicle_pay,
+                                                   tour_reservation_ids:[])
+  end
+
+  def define_selected_dates
+    params[:date] ||= @group_tour_reservation.date
+    @group_tour_reservation.selected_date = params[:date]
   end
 
   def find_group_reservation
     @group_tour_reservation = GroupTourReservation.find(params[:id])
-  end
-
-  def set_tour_res
-    if params[:date].nil?
-      @tour_res = TourReservation.where('date=?', @group_tour_reservation.date)
-    else
-      @tour_res = TourReservation.where('date=? AND status=?', params[:date], 0)
-    end 
   end
 
 end

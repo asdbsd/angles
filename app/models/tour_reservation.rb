@@ -1,9 +1,8 @@
 class TourReservation < ApplicationRecord
 
   belongs_to :tour
-  has_many :grouped_reservations, dependent: :destroy
-  has_many :group_tour_reservations, through: :grouped_reservations
-  enum status: { single: 0, grouped: 1}
+  belongs_to :group_tour_reservation, optional: true
+
 
   attribute :voucher, :string, default: "00000"
   attribute :p_up_time, :time, default: Time.now.strftime("%I:%M %p")
@@ -29,12 +28,4 @@ class TourReservation < ApplicationRecord
   validates :pax_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_chg, presence: true, numericality: { greater_than_or_equal_to: 0}
-
-
-
-  def tour_object_list
-    "#{date.strftime("%d-%B-%Y")} - #{hotel} - #{tour.name} - #{voucher}" 
-  end
-
-
 end

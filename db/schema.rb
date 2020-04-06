@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_12_081726) do
+ActiveRecord::Schema.define(version: 2020_04_05_074735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 2019_10_12_081726) do
     t.decimal "vehicle_pay", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "grouped_reservations", force: :cascade do |t|
-    t.bigint "group_tour_reservation_id", null: false
-    t.bigint "tour_reservation_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_tour_reservation_id"], name: "index_grouped_reservations_on_group_tour_reservation_id"
-    t.index ["tour_reservation_id"], name: "index_grouped_reservations_on_tour_reservation_id", unique: true
   end
 
   create_table "tour_reservations", force: :cascade do |t|
@@ -56,7 +47,8 @@ ActiveRecord::Schema.define(version: 2019_10_12_081726) do
     t.bigint "tour_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", default: 0
+    t.bigint "group_tour_reservation_id"
+    t.index ["group_tour_reservation_id"], name: "index_tour_reservations_on_group_tour_reservation_id"
     t.index ["tour_id"], name: "index_tour_reservations_on_tour_id"
   end
 
@@ -72,6 +64,5 @@ ActiveRecord::Schema.define(version: 2019_10_12_081726) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "grouped_reservations", "group_tour_reservations"
-  add_foreign_key "grouped_reservations", "tour_reservations"
+  add_foreign_key "tour_reservations", "group_tour_reservations"
 end

@@ -9,7 +9,7 @@
         </div>
         <div class="col">
         <%= f.label :date, "Select Date" %>
-        <%= f.date_field :date, value: Date.today, class: "form-control" %>
+        <%= f.date_field :date, class: "form-control" %>
         </div>
         <div class="col">
           <%= f.label :phone, "Phone Number" %>
@@ -89,7 +89,7 @@
       </div>
       <br />
       <div class="row">
-        <div class="col">  
+        <div class="col">
           <%= link_to "Back to Tour Reservations", tour_reservations_path, class: "btn btn-outline-secondary" %>
           <%= f.submit @t_reservation.new_record? ? "Create Reservation" : "Update Reservation", class: "btn btn-success float-right" %>
         </div>
