@@ -186,7 +186,11 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+<<<<<<< HEAD
     tzinfo (1.2.6)
+=======
+    tzinfo (1.2.7)
+>>>>>>> group-reservation
       thread_safe (~> 0.1)
     web-console (4.0.1)
       actionview (>= 6.0.0)
@@ -220,7 +224,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
-  rails (~> 6.0.0)
+  rails (~> 6.0.2.2)
   sass-rails (~> 5)
   selenium-webdriver
   spring
@@ -232,7 +236,14 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 2.7.0p0
 
 BUNDLED WITH
    2.1.2
+=======
+   ruby 2.7.1p83
+
+BUNDLED WITH
+   2.1.4
+>>>>>>> group-reservation

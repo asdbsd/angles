@@ -12,12 +12,12 @@
   <body>
 
     <div class="container">
+
       <%= render 'shared/nav' %>
 
-      <div>
-        <p><%= yield %></p>
-      </div>
-    </div>
+      <%= yield %>
 
+    </div>
+  <%= javascript_pack_tag 'group_tour_reservation', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

@@ -1,35 +1,32 @@
 
-<div class="row">
-  <div class="col col-md-1">
-
-  </div>
+<div class="row py-4">
   <div class="col">
-  <h1 class="text-center">Tour Reservations</h1>
-  <hr />
-  <%= link_to "New Single Reservation", new_tour_reservation_path, class: "btn btn-primary mb-3 btn-block" %>
-  <%= paginate @t_reservations %>
+    <h2>Tour Reservations</h2>
+    <%= link_to "New Tour Reservation", new_tour_reservation_path, class: "btn btn-primary mb-3" %>
+    <hr />
+    <%= paginate @t_reservations %>
 
-  <table class="table">
-    <tr>
-      <thead>
-        <th>DATE</th>
-        <th>TOUR</th>
-        <th>HOTEL</th>
-        <th>PICK UP</th>
-        <th>VOUCHER</th>
-        <th>MOBILE</th>
-        <th>AGENT</th>
-        <th>ACTIONS</th>
-      </thead>
-    </tr>
-    <%= render @t_reservations %>
-  </table>
+    <table class="table">
+      <tr>
+        <thead>
+          <th>DATE</th>
+          <th>TOUR</th>
+          <th>HOTEL</th>
+          <th>PICK UP</th>
+          <th>VOUCHER</th>
+          <th>MOBILE</th>
+          <th>AGENT</th>
+          <th>ACTIONS</th>
+        </thead>
+      </tr>
+      <%= render @t_reservations %>
+    </table>
 
-  <% if @t_reservations.empty? %>
-      <p>There are no <strong>Tour Reservations</strong> yet</p>
-  <% end %>
+    <% if @t_reservations.empty? %>
+        <p>There are no <strong>Tour Reservations</strong> yet</p>
+    <% end %>
 
-  <%= paginate @t_reservations %>
+    <%= paginate @t_reservations %>
   </div>
 </div>
 

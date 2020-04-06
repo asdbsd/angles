@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_093222) do
+ActiveRecord::Schema.define(version: 2020_04_05_074735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_tour_reservations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.string "guide"
+    t.decimal "guide_pay", precision: 8, scale: 2
+    t.string "vehicle"
+    t.decimal "vehicle_pay", precision: 8, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tour_reservations", force: :cascade do |t|
     t.datetime "date"
@@ -36,6 +47,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_093222) do
     t.bigint "tour_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "group_tour_reservation_id"
+    t.index ["group_tour_reservation_id"], name: "index_tour_reservations_on_group_tour_reservation_id"
     t.index ["tour_id"], name: "index_tour_reservations_on_tour_id"
   end
 
@@ -51,4 +64,5 @@ ActiveRecord::Schema.define(version: 2019_08_26_093222) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "tour_reservations", "group_tour_reservations"
 end

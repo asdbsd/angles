@@ -1,0 +1,63 @@
+<%= form_with model: @group_tour_reservation do |form| %>
+<form>
+  <div class="form-row py-3">
+    <div class="form-group col-md-4">
+      <%= form.label :name, 'Group Name' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= form.label :date, 'Group Date' %>
+      <%= form.date_field :date, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-row py-3">
+    <div class="form-group col-md-3">
+      <%= form.label :vehicle, 'Select Vehicle' %>
+      <%= form.text_field :vehicle, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :vehicle_pay, 'Vehicle Pay' %>
+      <%= form.number_field :vehicle_pay, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :guide, 'Select Guide' %>
+      <%= form.text_field :guide, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :guide_pay, 'Guide Pay' %>
+      <%= form.number_field :guide_pay, class: 'form-control' %>
+    </div>
+  </div>
+
+  <h4>SELECT RESERVATIONS TO GROUP</h5>
+  <div class="form-row py-3">
+    <!-- Table  -->
+    <table class="table table-bordered">
+      <!-- Table head -->
+      <thead>
+        <tr>
+          <th>TOUR</th>
+          <th>DATE</th>
+          <th>VOUCHER</th>
+          <th>MOBILE</th>
+          <th>PICK UP</th>
+        </tr>
+      </thead>
+      <!-- Table head -->
+
+      <!-- Table body -->
+      <tbody>
+        <%= render partial: 'available_reservations', locals: { form: form } %>
+      </tbody>
+
+      <!-- Table body -->
+    </table>
+    <!-- Table  -->
+  </div>
+  <%= link_to "Back to Group Reservations", group_tour_reservations_path, class: "btn btn-outline-secondary" %>
+  <%= form.submit @group_tour_reservation.new_record? ? "Create Reservation" : "Save", class: "btn btn-success float-right" %>
+</form>
+<% end %>
+
+
+

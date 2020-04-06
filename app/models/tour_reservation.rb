@@ -1,5 +1,8 @@
 class TourReservation < ApplicationRecord
+
   belongs_to :tour
+  belongs_to :group_tour_reservation, optional: true
+
 
   attribute :voucher, :string, default: "00000"
   attribute :p_up_time, :time, default: Time.now.strftime("%I:%M %p")
@@ -25,5 +28,4 @@ class TourReservation < ApplicationRecord
   validates :pax_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_chg, presence: true, numericality: { greater_than_or_equal_to: 0}
-
 end

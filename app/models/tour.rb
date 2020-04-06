@@ -1,5 +1,6 @@
 class Tour < ApplicationRecord
   has_many :tour_reservations
+
   attribute :ad_price, :decimal, default: 0.00
   attribute :ch_price, :decimal, default: 0.00
   attribute :add_ad_price, :decimal, default: 0.00

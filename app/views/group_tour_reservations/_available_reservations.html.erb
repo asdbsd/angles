@@ -1,0 +1,24 @@
+<%= form.collection_check_boxes(:tour_reservation_ids, reservations_by_date, :id, :id, { checked: @reservations_list }, include_hidden: false ) do |b| %>
+  <tr>
+    <td>
+      <!-- Material unchecked -->
+      <%= b.label(class: "form-check") do %>
+        <%= b.check_box(class: "form-check-input") %>
+        <%= b.object.tour.name %> </br>
+        <%= reservation_pax(b.object) %>
+      <% end %>
+    </td>
+    <td>
+        <%= b.object.date.strftime("%B %d %Y") %>
+    </td>
+    <td>
+        <%= b.object.voucher %>
+    </td>
+    <td>
+        <%= b.object.phone %>
+    </td>
+    <td>
+        <%= b.object.p_up_time.strftime("%I:%M %p") %>
+    </td>
+  </tr>
+<% end %>
