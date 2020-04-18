@@ -3,19 +3,8 @@ class TourReservation < ApplicationRecord
   belongs_to :tour
   belongs_to :group_tour_reservation, optional: true
 
+  after_initialize :set_defaults
 
-  attribute :voucher, :string, default: "00000"
-  attribute :p_up_time, :time, default: Time.now.strftime("%I:%M %p")
-  attribute :ad_sale_price, :decimal, default: 0.00
-  attribute :add_ad_sale_price, :decimal, default: 0.00
-  attribute :ch_sale_price, :decimal, default: 0.00
-  attribute :add_ch_sale_price, :decimal, default: 0.00
-  attribute :add_chg_sale_price, :decimal, default: 0.00
-  attribute :pax_ad, :integer, default: 0
-  attribute :pax_add_ad, :integer, default: 0
-  attribute :pax_ch, :integer, default: 0
-  attribute :pax_add_ch, :integer, default: 0
-  attribute :pax_add_chg, :integer, default: 0
 
   validates :voucher, length: { in: 2..20 }
   validates :ad_sale_price, presence: true, numericality: { greater_than_or_equal_to: 0.01}
@@ -28,4 +17,18 @@ class TourReservation < ApplicationRecord
   validates :pax_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_ch, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :pax_add_chg, presence: true, numericality: { greater_than_or_equal_to: 0}
+
+  def set_defaults
+    self.voucher            ||= "00000"
+    self.ad_sale_price      ||= 0.00
+    self.add_ad_sale_price  ||= 0.00
+    self.ch_sale_price      ||= 0.00
+    self.add_ch_sale_price  ||= 0.00
+    self.add_chg_sale_price ||= 0.00
+    self.pax_ad             ||= 0
+    self.pax_add_ad         ||= 0
+    self.pax_ch             ||= 0
+    self.pax_add_ch         ||= 0
+    self.pax_add_chg        ||= 0
+  end
 end

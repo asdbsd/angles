@@ -1,0 +1,10 @@
+<% if @group_tour_reservation.errors.any? %>
+  <div class="alert alert-danger">
+    <p>Please correct the following <%= pluralize(@group_tour_reservation.errors.count, "error") %>:</p>
+    <ul>
+      <% @group_tour_reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

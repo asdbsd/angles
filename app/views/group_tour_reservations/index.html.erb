@@ -1,10 +1,9 @@
-<div class="row">
+<div class="row py-4">
   <div class="col">
-    <h1 class="text-center">All Group Reservations</h1>
+    <h2>All Group Reservations</h2>
+    <%= link_to "New Group Reservatons", new_group_tour_reservation_path, class: "btn btn-primary" %>
     <hr />
-    <div class="py-3"><%= link_to "New Group Reservatons", new_group_tour_reservation_path, class: "btn btn-primary btn-block" %></div>
     <table class="table">
-      <%= paginate @group_tour_reservations %>
       <tr>
         <thead>
           <th>Name</th>
@@ -22,8 +21,5 @@
     <% if @group_tour_reservations.empty? %>
         <p>There are no <strong>Tours</strong> yet</p>
     <% end %>
-
-    <%= paginate @group_tour_reservations %>
   </div>
 </div>
-<br />
