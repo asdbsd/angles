@@ -1,5 +1,5 @@
 
-<%= form_with model: @group_tour_reservation do |form| %>
+<%= form_with model: @group_tour_reservation, local: true do |form| %>
 <form>
   <div class="form-row py-3">
     <div class="form-group col-md-4">
@@ -33,7 +33,7 @@
   <h4>SELECT RESERVATIONS TO GROUP</h5>
   <div class="form-row py-3">
     <!-- Table  -->
-    <table class="table table-bordered">
+    <table id="tour_reservations" class="table table-bordered">
       <!-- Table head -->
       <thead>
         <tr>
@@ -47,8 +47,9 @@
       <!-- Table head -->
 
       <!-- Table body -->
-      <tbody>
+      <tbody >
         <%= render partial: 'available_reservations', locals: { form: form } %>
+        </tr>
       </tbody>
 
       <!-- Table body -->
